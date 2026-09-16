@@ -1,0 +1,15 @@
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+}
+
+.main {
+  width: 100%;
+}
