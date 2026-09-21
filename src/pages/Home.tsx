@@ -8,6 +8,7 @@ function Home({ posts }: { posts: Post[] }) {
         <Link key={post.id} to={`/posts/${post.id}`}>
           <h2>{post.title}</h2>
         </Link>
+        <Link to={`/edit/${numbericId}`}>수정</Link>
       ))}
     </div>
   );
