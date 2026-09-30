@@ -1,16 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import type { Dispatch, SetStateAction } from 'react';
-import type { Post } from '../types/post';
+import { useContext } from 'react';
+import { PostContext } from '../../context/PostContext';
 
-const PostDetail = ({
-  posts,
-  setPosts,
-}: {
-  posts: Post[];
-  setPosts: Dispatch<SetStateAction<Post[]>>;
-}) => {
+const PostDetail = () => {
+  const context = useContext(PostContext);
+  if (!context) throw new Error('PostContext가 없습니다');
+  const { posts, setPosts } = context;
   const navigate = useNavigate();
   const { id } = useParams();
   const numbericId = Number(id);

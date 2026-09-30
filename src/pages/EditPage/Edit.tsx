@@ -1,17 +1,15 @@
-import type { Post } from '../types/post';
-import type { Dispatch, SetStateAction } from 'react';
+import { useContext } from 'react';
+import { PostContext } from '../../context/PostContext';
 import type { FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Edit = ({
-  posts,
-  setPosts,
-}: {
-  posts: Post[];
-  setPosts: Dispatch<SetStateAction<Post[]>>;
-}) => {
+const Edit = () => {
+  const context = useContext(PostContext);
+  if (!context) throw new Error('PostContext가 없습니다');
+  const { posts, setPosts } = context;
+
   const navigate = useNavigate();
   const { id } = useParams();
   const numbericId = Number(id);
