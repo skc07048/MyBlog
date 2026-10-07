@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import type { FormEvent } from 'react';
-import { useContext } from 'react';
 import { PostContext } from '../../context/PostContext';
 import type { Post } from '../../types/post';
+import './Write.scss';
 
 const Write = () => {
   const context = useContext(PostContext);
@@ -29,37 +29,45 @@ const Write = () => {
     };
 
     setPosts([...posts, newPost]);
-
     navigate('/');
   };
 
   return (
-    <div className='Write'>
-      <form onSubmit={handleSubmit}>
-        <select
-          value={category}
-          onChange={(e) => {
-            setCategory(e.target.value as '개발' | '트러블슈팅' | '프로젝트');
-          }}
-        >
-          <option value='개발'>개발</option>
-          <option value='트러블슈팅'>트러블슈팅</option>
-          <option value='프로젝트'>프로젝트</option>
-        </select>
-        <input
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-        <textarea
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-        ></textarea>
-        <button type='submit'>등록</button>
-      </form>
+    <div className='post-form-page'>
+      <header className='post-form-header'>
+        <Link to='/' className='back-link'>
+          ← 목록으로
+        </Link>
+      </header>
+
+      <div className='post-form'>
+        <h1>글쓰기</h1>
+        <form onSubmit={handleSubmit}>
+          <select
+            value={category}
+            onChange={(e) =>
+              setCategory(e.target.value as '개발' | '트러블슈팅' | '프로젝트')
+            }
+          >
+            <option value='개발'>개발</option>
+            <option value='트러블슈팅'>트러블슈팅</option>
+            <option value='프로젝트'>프로젝트</option>
+          </select>
+          <input
+            placeholder='제목'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder='내용을 입력하세요'
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <button type='submit' className='submit-btn'>
+            등록
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

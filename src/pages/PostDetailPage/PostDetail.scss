@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+
+.post-detail {
+  min-height: 100vh;
+  background: $bg-primary;
+  color: $text-primary;
+}
+
+.post-detail-header {
+  padding: $spacing-lg $spacing-2xl;
+  border-bottom: 1px solid $border;
+
+  @media (max-width: $tablet) {
+    padding: $spacing-md $spacing-lg;
+  }
+
+  .back-link {
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.post-detail-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: $spacing-2xl $spacing-lg;
+
+  @media (max-width: $tablet) {
+    padding: $spacing-xl $spacing-lg;
+  }
+
+  .category-tag {
+    display: inline-block;
+    background: $bg-secondary;
+    color: $accent-hover;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: $spacing-md;
+  }
+
+  h2 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 $spacing-sm;
+
+    @media (max-width: $mobile) {
+      font-size: 24px;
+    }
+  }
+
+  .date {
+    font-size: 13px;
+    color: $text-secondary;
+    margin-bottom: $spacing-xl;
+  }
+
+  p {
+    line-height: 1.8;
+    font-size: 16px;
+    color: $text-primary;
+    white-space: pre-wrap;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .actions {
+    display: flex;
+    gap: $spacing-sm;
+    border-top: 1px solid $border;
+    padding-top: $spacing-lg;
+
+    a,
+    button {
+      background: $bg-secondary;
+      color: $text-secondary;
+      border: 1px solid $border;
+      border-radius: $radius-sm;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: $bg-hover;
+        color: $text-primary;
+      }
+    }
+
+    .delete-btn:hover {
+      border-color: $danger;
+      color: $danger;
+    }
+  }
+}
